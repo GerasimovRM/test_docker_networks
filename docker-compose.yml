@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  server1:
+    container_name: test_server_1
+    build: ./server1
+    command: uvicorn main:app --host 0.0.0.0 --reload
+    ports:
+      - "5500:5500"
+    networks:
+      - test_bridge
+
+networks:
+  test_bridge:
+    name: test_bridge
+    external: true
